@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sine2DFunction.gd" type="Script" id=1]
+
+[node name="Sine2DFunction" type="Spatial"]
+script = ExtResource( 1 )
