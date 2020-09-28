@@ -1,6 +1,5 @@
 extends Spatial
 
-const function = "WaveFunction";
-
 static func graph_function(x, z, t):
-	return sin(PI * (x + z + t));
+	var y = sin(PI * (x + z + t));
+	return Vector3(x, y, z);

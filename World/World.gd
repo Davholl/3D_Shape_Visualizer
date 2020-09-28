@@ -9,6 +9,13 @@ enum functionEnum {
 	WAVEFUNCTION,
 	TRIPLEWAVEFUNCTION,
 	RIPPLE2DFUNCTION,
+	SPHEREFUNCTION,
+	SCALINGSPHEREFUNCTION,
+	BANDEDSPHEREFUNCTION,
+	HORIZONTALBANDSPHEREFUNCTION,
+	VERTICALBANDSPHEREFUNCTION,
+	TORUSFUNCTION,
+	TWISTINGTORUSFUNCTION,
 };
 export(functionEnum) var currentfunction;
 var function;
@@ -18,8 +25,8 @@ enum graphEnum {
 	SQUAREGRAPH,
 	DIAMONDGRAPH,
 };
-export(graphEnum) var currentGraph;
-var graph;
+var currentGraph = graphEnum.SQUAREGRAPH;
+var graph: Graph;
 
 var points = [];
 var timer = 0;
@@ -41,13 +48,24 @@ func _ready():
 	points = graph.set_up_graph(elements);
 
 func _process(delta):
+	choose_function();
+	timer+=delta;
+	var x = 0;
+	var z = 0;
 	for n in range(points.size()):
 		var point = points[n];
-		choose_function();
-		point.translation.y = function.graph_function(point.translation.x, point.translation.z, timer);
+		
+		if (currentGraph == graphEnum.SQUAREGRAPH):
+			if x == elements:
+				x = 0;
+				z +=1;
+				
+		var u = (x + 0.5) * graph.step - 1.0;
+		var v = (z + 0.5) * graph.step - 1.0;
+		point.translation = function.graph_function(u, v, timer);
 		point.get_surface_material(0).set_shader_param("worldPos", point.translation);
-	timer+=delta;
-
+		x+=1;
+		
 func choose_function():
 	match currentfunction:
 		functionEnum.SINEFUNCTION:
@@ -64,6 +82,20 @@ func choose_function():
 			function = $Functions/TripleWaveFunction;
 		functionEnum.RIPPLE2DFUNCTION:
 			function = $Functions/Ripple2DFunction;
+		functionEnum.SPHEREFUNCTION:
+			function = $Functions/SphereFunction;
+		functionEnum.SCALINGSPHEREFUNCTION:
+			function = $Functions/ScalingSphereFunction;
+		functionEnum.BANDEDSPHEREFUNCTION:
+			function = $Functions/BandedSphereFunction;	
+		functionEnum.HORIZONTALBANDSPHEREFUNCTION:
+			function = $Functions/HorizontalBandSphereFunction;	
+		functionEnum.VERTICALBANDSPHEREFUNCTION:
+			function = $Functions/VerticalBandSphereFunction;	
+		functionEnum.TORUSFUNCTION:
+			function = $Functions/TorusFunction;	
+		functionEnum.TWISTINGTORUSFUNCTION:
+			function = $Functions/TwistingTorusFunction;		
 		_:
 			function = $Functions/SineFunction;
 

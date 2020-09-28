@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Functions/RippleFunction.gd" type="Script" id=1]
 [ext_resource path="res://Functions/WaveFunction.gd" type="Script" id=2]
@@ -12,12 +12,18 @@
 [ext_resource path="res://World/World.gd" type="Script" id=10]
 [ext_resource path="res://World/Camera.gd" type="Script" id=11]
 [ext_resource path="res://Functions/Ripple2DFunction.gd" type="Script" id=12]
+[ext_resource path="res://Functions/SphereFunction.gd" type="Script" id=13]
+[ext_resource path="res://Functions/ScalingSphereFunction.gd" type="Script" id=14]
+[ext_resource path="res://Functions/BandedSphereFunction.gd" type="Script" id=15]
+[ext_resource path="res://Functions/HorizontalBandSphereFunction.gd" type="Script" id=16]
+[ext_resource path="res://Functions/VerticalBandSphereFunction.gd" type="Script" id=17]
+[ext_resource path="res://Functions/TorusFunction.gd" type="Script" id=18]
+[ext_resource path="res://Functions/TwistingTorusFunction.gd" type="Script" id=19]
 
 [node name="GraphManager" type="Spatial"]
 script = ExtResource( 10 )
 elements = 100
-currentfunction = 6
-currentGraph = 1
+currentfunction = 9
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.819152, -0.286788, 0.496732, 0, 0.866025, 0.5, -0.573577, -0.409576, 0.709406, 2, 2, 3 )
@@ -43,6 +49,27 @@ script = ExtResource( 4 )
 
 [node name="Ripple2DFunction" type="Spatial" parent="Functions"]
 script = ExtResource( 12 )
+
+[node name="SphereFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 13 )
+
+[node name="ScalingSphereFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 14 )
+
+[node name="BandedSphereFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 15 )
+
+[node name="HorizontalBandSphereFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 16 )
+
+[node name="VerticalBandSphereFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 17 )
+
+[node name="TorusFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 18 )
+
+[node name="TwistingTorusFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 19 )
 
 [node name="Graphs" type="Spatial" parent="."]
 
