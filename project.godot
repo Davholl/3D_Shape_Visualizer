@@ -8,15 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Spatial",
+"class": "Graph",
+"language": "GDScript",
+"path": "res://Graph/Graph.gd"
+} ]
 _global_script_class_icons={
-
+"Graph": ""
 }
 
 [application]
 
 config/name="Catlike"
-run/main_scene="res://World.tscn"
+run/main_scene="res://World/World.tscn"
 config/icon="res://icon.png"
 
 [rendering]

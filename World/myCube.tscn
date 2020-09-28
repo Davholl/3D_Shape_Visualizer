@@ -4,23 +4,25 @@
 
 [sub_resource type="Skin" id=2]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=3]
 code = "shader_type spatial;
 uniform float yPosition;
 uniform float xPosition;
+uniform vec3 worldPos;
 
 void fragment(){
-	ALBEDO = vec3(xPosition, yPosition, 0);
+	ALBEDO = worldPos;
 }
 
 "
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/yPosition = null
 shader_param/xPosition = null
+shader_param/worldPos = null
 
-[node name="Spatial" type="MeshInstance"]
+[node name="Cube" type="MeshInstance"]
 mesh = SubResource( 1 )
 skin = SubResource( 2 )
-material/0 = SubResource( 3 )
+material/0 = SubResource( 4 )

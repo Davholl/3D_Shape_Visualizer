@@ -1,0 +1,56 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Functions/RippleFunction.gd" type="Script" id=1]
+[ext_resource path="res://Functions/WaveFunction.gd" type="Script" id=2]
+[ext_resource path="res://Graph/SquareGraph.gd" type="Script" id=3]
+[ext_resource path="res://Functions/TripleWaveFunction.gd" type="Script" id=4]
+[ext_resource path="res://Graph/LineGraph.gd" type="Script" id=5]
+[ext_resource path="res://Graph/DiamondGraph.gd" type="Script" id=6]
+[ext_resource path="res://Functions/SineFunction.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Functions/Sine2DFunction.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Functions/MultiSineFunction.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/World.gd" type="Script" id=10]
+[ext_resource path="res://World/Camera.gd" type="Script" id=11]
+[ext_resource path="res://Functions/Ripple2DFunction.gd" type="Script" id=12]
+
+[node name="GraphManager" type="Spatial"]
+script = ExtResource( 10 )
+elements = 100
+currentfunction = 6
+currentGraph = 1
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.819152, -0.286788, 0.496732, 0, 0.866025, 0.5, -0.573577, -0.409576, 0.709406, 2, 2, 3 )
+script = ExtResource( 11 )
+currentView = 2
+
+[node name="Functions" type="Spatial" parent="."]
+
+[node name="SineFunction" parent="Functions" instance=ExtResource( 7 )]
+
+[node name="Sine2DFunction" parent="Functions" instance=ExtResource( 8 )]
+
+[node name="MultiSineFunction" parent="Functions" instance=ExtResource( 9 )]
+
+[node name="RippleFunction" parent="Functions" instance=ExtResource( 9 )]
+script = ExtResource( 1 )
+
+[node name="WaveFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 2 )
+
+[node name="TripleWaveFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 4 )
+
+[node name="Ripple2DFunction" type="Spatial" parent="Functions"]
+script = ExtResource( 12 )
+
+[node name="Graphs" type="Spatial" parent="."]
+
+[node name="LineGraph" type="Spatial" parent="Graphs"]
+script = ExtResource( 5 )
+
+[node name="SquareGraph" type="Spatial" parent="Graphs"]
+script = ExtResource( 3 )
+
+[node name="DiamondGraph" type="Spatial" parent="Graphs"]
+script = ExtResource( 6 )
