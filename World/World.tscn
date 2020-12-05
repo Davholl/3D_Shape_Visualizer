@@ -23,7 +23,7 @@
 [node name="GraphManager" type="Spatial"]
 script = ExtResource( 10 )
 elements = 100
-currentfunction = 9
+currentfunction = 1
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.819152, -0.286788, 0.496732, 0, 0.866025, 0.5, -0.573577, -0.409576, 0.709406, 2, 2, 3 )
